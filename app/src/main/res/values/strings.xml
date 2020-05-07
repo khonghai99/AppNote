@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppNotePad</string>
+    <string name="search_hint">Search here</string>
+    <string name="sortWord">Sắp xếp theo tên</string>
+    <string name="sortDate">sắp xếp theo ngày</string>
+    <string name="insert">Add</string>
+    <string name="addNewNote">Ghi chú mới</string>
+    <string name="addNewFolder">Danh mục mới</string>
+</resources>
