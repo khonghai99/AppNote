@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUsActivity"
+    android:background="@drawable/bg_notepad">
+    
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Application Note"
+        android:textStyle="bold"
+        android:textColor="#1C7F8C"
+        android:textSize="40dp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:id="@+id/Sea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Khổng Minh Hải"
+        android:padding="10dp"
+        android:textSize="35dp"
+        android:fontFamily="@font/bungee"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/info"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đinh Trọng Hiệp"
+        android:fontFamily="@font/bungee"
+        android:layout_below="@id/Sea"
+        android:textSize="35dp"
+        android:gravity="center_horizontal"
+        />
+
+
+</RelativeLayout>

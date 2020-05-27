@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/colorAccent"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgWelcome"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_notepad"
+        />
+
+    <TextView
+        android:id="@+id/txtWelcome1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/bungee"
+        android:text="Group 9"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/txtWelcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Android Studio App Development"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        />
+</LinearLayout>
+
+
+

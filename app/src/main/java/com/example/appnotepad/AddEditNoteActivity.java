@@ -138,9 +138,11 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
         String title = this.textTitle.getText().toString();
         String content = this.textContent.getText().toString();
-        String datetime = this.textViewDate.getText().toString() + " " + this.textViewTime.getText().toString();
+        String date = this.textViewDate.getText().toString();
+        String time = this.textViewTime.getText().toString();
+        String datetime = date + " " + time;
 
-        if (title.equals("") || content.equals("") || datetime.equals("")) {
+        if (title.equals("") || content.equals("") || date.equals("") || time.equals("")) {
             Toast.makeText(getApplicationContext(),
                     "Please enter enough information", Toast.LENGTH_LONG).show();
             return;

@@ -76,7 +76,7 @@ public class CustomNoteAdapter extends BaseAdapter implements Filterable {
                 constraint = constraint.toString().toUpperCase();
                 ArrayList<Note> filterNote = new ArrayList<>();
                 for (int i = 0; i < getNote.size(); i++) {
-                    if (getNote.get(i).getNoteContent().toUpperCase().contains(constraint)) {
+                    if (getNote.get(i).getNoteTitle().toUpperCase().contains(constraint)) {
                         Note note = new Note(getNote.get(i).getNoteId(), getNote.get(i).getNoteTitle(), getNote.get(i).getNoteContent(), getNote.get(i).getNoteDate());
                         filterNote.add(note);
                     }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutSetting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8C375"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:id="@+id/txtBackGround"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_color"
+        android:drawablePadding="10dp"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="BackGround"
+        android:textColor="#050505"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/txtFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtBackGround"
+        android:drawableLeft="@drawable/ic_font"
+        android:drawablePadding="10dp"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="Font"
+        android:textColor="#000000"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/txtColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtFont"
+        android:drawableLeft="@drawable/ic_color_text"
+        android:drawablePadding="10dp"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="Color"
+        android:textColor="#000000"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/txtSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtColor"
+        android:drawableLeft="@drawable/ic_size"
+        android:drawablePadding="10dp"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="Size"
+        android:textColor="#000000"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/txtSetPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtSize"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="10dp"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="Password"
+        android:textColor="#000000"
+        android:textSize="35sp" />
+
+</RelativeLayout>
