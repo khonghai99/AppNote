@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/bungee"
-        android:text="Group 9"
+        android:text="Note"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="50dp"

@@ -33,7 +33,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class GarbageNoteActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
@@ -57,10 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("Ghi chú");
-
-
+        setContentView(R.layout.activity_garbage_note);
+        setTitle("Garbage");
         //BroadcastReceiver
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         filter.addAction(Intent.ACTION_HEADSET_PLUG);
 
-        MainActivity.this.registerReceiver(myReceiver, filter);
+        GarbageNoteActivity.this.registerReceiver(myReceiver, filter);
 
         // Navigation
         toolbar = findViewById(R.id.toolbar);
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Get ListView object from xml
         this.listView = (ListView) findViewById(R.id.listView);
 
-        DBNoteHelper db = new DBNoteHelper(this);
+        DBGarbageNoteHelper db = new DBGarbageNoteHelper(this);
 
         List<Note> list = db.getAllNotes();
         this.noteList.addAll(list);
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MainActivity.this.unregisterReceiver(myReceiver);
+        GarbageNoteActivity.this.unregisterReceiver(myReceiver);
     }
 
     @Override
@@ -154,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // Start AddEditNoteActivity, (with feedback).
             this.startActivityForResult(intent, MY_REQUEST_CODE);
-
+            ServiceCaller(intent1);
         } else if (item.getItemId() == R.id.menu_sort_word) {
             Collections.sort(noteList, new Comparator<Note>() {
                 @Override
@@ -163,18 +161,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
             adapter.notifyDataSetChanged();
-            Toast.makeText(MainActivity.this, "Sorted by word", Toast.LENGTH_SHORT).show();
+            Toast.makeText(GarbageNoteActivity.this, "Sorted by word", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.menu_sort_date) {
 
             adapter.notifyDataSetChanged();
-            Toast.makeText(MainActivity.this, "Sorted by date", Toast.LENGTH_SHORT).show();
+            Toast.makeText(GarbageNoteActivity.this, "Sorted by date", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        getMenuInflater().inflate(R.menu.context_menu, menu);
+        getMenuInflater().inflate(R.menu.garbage_menu, menu);
         super.onCreateContextMenu(menu, view, menuInfo);
     }
 
@@ -185,28 +183,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final Note selectedNote = (Note) this.listView.getItemAtPosition(info.position);
 
-        if (item.getItemId() == R.id.menu_item_view) {
-            Toast.makeText(getApplicationContext(), selectedNote.getNoteContent(), Toast.LENGTH_LONG).show();
-        } else if (item.getItemId() == R.id.menu_item_edit) {
-            Intent intent = new Intent(this, AddEditNoteActivity.class);
-            intent.putExtra("note", selectedNote);
 
-            // Start AddEditNoteActivity, (with feedback).
-            this.startActivityForResult(intent, MY_REQUEST_CODE);
-
-        } else if (item.getItemId() == R.id.menu_item_delete) {
+        if (item.getItemId() == R.id.menu_undo) {
 
             // Ask before deleting.
             new AlertDialog.Builder(this)
-                    .setMessage(selectedNote.getNoteTitle() + ". Are you sure you want to delete?")
+                    .setMessage(selectedNote.getNoteTitle() + ". Are you sure you want to undo this note?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            DBGarbageNoteHelper db = new DBGarbageNoteHelper(MainActivity.this);
                             deleteNote(selectedNote);
+                            DBNoteHelper db = new DBNoteHelper(GarbageNoteActivity.this);
                             db.addNote(selectedNote);
                             ServiceCaller(intent1);
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        } else if (item.getItemId() == R.id.menu_delete_forever) {
 
+            // Ask before deleting.
+            new AlertDialog.Builder(this)
+                    .setMessage(selectedNote.getNoteTitle() + ". Are you sure you want to delete forever this note?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            deleteNote(selectedNote);
                         }
                     })
                     .setNegativeButton("No", null)
@@ -219,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     // Delete a record
     private void deleteNote(Note note) {
-        DBNoteHelper db = new DBNoteHelper(this);
+        DBGarbageNoteHelper db = new DBGarbageNoteHelper(this);
         db.deleteNote(note);
         this.noteList.remove(note);
         // Refresh ListView.
@@ -270,15 +272,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_about_us) {
-            Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
+            Intent intent = new Intent(GarbageNoteActivity.this, AboutUsActivity.class);
             startActivity(intent);
         }
         if (item.getItemId() == R.id.nav_garbage) {
-            Intent intent = new Intent(MainActivity.this, GarbageNoteActivity.class);
+            Intent intent = new Intent(GarbageNoteActivity.this, GarbageNoteActivity.class);
             startActivity(intent);
         }
         if (item.getItemId() == R.id.nav_home) {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            Intent intent = new Intent(GarbageNoteActivity.this, MainActivity.class);
             startActivity(intent);
         }
         if (item.getItemId() == R.id.nav_exit) {

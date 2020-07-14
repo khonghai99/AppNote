@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/constraintLayoutAddEdit"
+    android:background="@drawable/bg_list"
     android:layout_height="match_parent"
     tools:context=".AddEditNoteActivity">
 
@@ -113,14 +114,20 @@
         <Button
             android:id="@+id/button_save"
             android:layout_width="wrap_content"
+            android:background="@drawable/background"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:text="Save" />
 
         <Button
             android:id="@+id/button_cancel"
             android:layout_width="wrap_content"
+            android:background="@drawable/background"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:text="Cancel" />
     </LinearLayout>

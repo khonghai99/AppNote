@@ -4,9 +4,18 @@
     <item android:title="General">
         <menu>
             <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home"
+                android:title="Home" />
+
+            <item
                 android:id="@+id/nav_about_us"
                 android:icon="@drawable/ic_about_us"
                 android:title="About us" />
+            <item
+                android:id="@+id/nav_garbage"
+                android:icon="@drawable/ic_delete"
+                android:title="Garbage" />
             <item
                 android:id="@+id/nav_exit"
                 android:icon="@drawable/ic_exit"

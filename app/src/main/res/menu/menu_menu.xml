@@ -37,10 +37,6 @@
                 android:id="@+id/menu_add_note"
                 android:icon="@drawable/ic_note_add"
                 android:title="@string/addNewNote" />
-            <item
-                android:id="@+id/menu_add_folder"
-                android:icon="@drawable/ic_create_new_folder"
-                android:title="@string/addNewFolder" />
         </menu>
     </item>
 </menu>
